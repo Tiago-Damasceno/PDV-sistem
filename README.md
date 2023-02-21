@@ -1,1 +1,1 @@
-# automato
+# sistema PDV
