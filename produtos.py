@@ -8,3 +8,5 @@ class produtos:
 
 produto = produtos('hamburger', '001', '10,00')
 print(produto.preço)
+print(produto.produto)
+print(produto.codigo)

@@ -2,16 +2,14 @@ import pyodbc
 
 
 
-dadosconnect = "Driver={SQL Server};Server=DESKTOP-L79M8K7\SQLEXPRESS;Database=bd_PDV;"
-conexão = pyodbc.connect(dadosconnect)
+dadosconnect = "Driver={SQL Server}; Server=.; Database=bd_PDV;"
+conn = pyodbc.connect(driver='{SQL Server}', host='DESKTOP-L79M8K7', database='db_PDV',
+                      )
+cursor = connection.cursor()
 print("Hello, World!")
+cursor.close()
+connection.close()
 
-cursor = conexão.cursor()
-comando = "INSERT INTO produtos(nome_produto, preço_produto, quantidade) VALUES ('x-burguer', 15.00, 4)"
-
-cursor.execute(comando)
-#cursor.commit #só é usado para mudanças no banco de dados(adicionar ou retrirar)
-conexão.close()
 
 
 
