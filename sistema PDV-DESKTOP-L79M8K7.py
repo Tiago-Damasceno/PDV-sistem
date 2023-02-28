@@ -1,14 +1,32 @@
 import pyodbc
+from produtos import produtos
 
 
+# Estabelecendo a conexão com o banco de dados
+dados_conexao = "Driver={SQL Server};Server=DESKTOP-L79M8K7\SQLEXPRESS;Database=bd_PDV;"
+conexão = pyodbc.connect(dados_conexao)
+print("Conexão bem sucedida")
 
-dadosconnect = "Driver={SQL Server}; Server=.; Database=bd_PDV;"
-conn = pyodbc.connect(driver='{SQL Server}', host='DESKTOP-L79M8K7', database='db_PDV',
-                      )
-cursor = connection.cursor()
-print("Hello, World!")
+# Criando um cursor para executar as consultas SQL
+cursor = conexão.cursor()
+
+# Inserindo um registro na tabela "tbl_produtos"
+# Os nomes das colunas precisam estar entre parênteses e em ordem correspondente aos valores que estão sendo inseridos
+produto = produtos('xburguer',3 , 12, 2)
+produto2 = produtos('nome produto', 'codigo do produto', 'valor do produto', 'quantidade pedido')
+cursor.execute("INSERT INTO tbl_produtos (id_produtos, nome_produto, preço, quantidade) VALUES (?, ?, ?, ?)", 
+                (produto.codigo, produto.nome, produto.preço, produto.quantidade))
+
+# Salvando as mudanças no banco de dados
+conexão.commit()
+
+# Fechando o cursor e a conexão
 cursor.close()
-connection.close()
+conexão.close()
+
+#print("conexão bem sucedida")
+#cursor.close()
+#connection.close()
 
 
 
