@@ -1,5 +1,6 @@
 import pyodbc
 from produtos import produtos
+from usuario import usuario
 
 
 # Estabelecendo a conexão com o banco de dados
@@ -12,10 +13,11 @@ cursor = conexão.cursor()
 
 # Inserindo um registro na tabela "tbl_produtos"
 # Os nomes das colunas precisam estar entre parênteses e em ordem correspondente aos valores que estão sendo inseridos
-produto = produtos('xburguer',3 , 12, 2)
-produto2 = produtos('nome produto', 'codigo do produto', 'valor do produto', 'quantidade pedido')
-cursor.execute("INSERT INTO tbl_produtos (id_produtos, nome_produto, preço, quantidade) VALUES (?, ?, ?, ?)", 
-                (produto.codigo, produto.nome, produto.preço, produto.quantidade))
+#produto = produtos('xburguer',3 , 12, 2)
+#produto3 = produtos('xbacon', '5', '15', '1')
+cliente = usuario('paula', '12345', 'paula@gmail.com' )
+cursor.execute("INSERT INTO tbl_clientes (nome_cliente, telefone, email_cliente) VALUES (?, ?, ?)", 
+                (cliente.nome, cliente.email, cliente.telefone))
 
 # Salvando as mudanças no banco de dados
 conexão.commit()
@@ -57,4 +59,4 @@ conexão.close()
 # 5 criar uma interface para melhor visualização dessa lista
 # 6 criar um sistema de cadastro de usuario.
 # criar um banco de imagens (talves fazer um banco de upload)
-# 
+
