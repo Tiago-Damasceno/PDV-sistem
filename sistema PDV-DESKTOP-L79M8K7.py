@@ -13,9 +13,8 @@ cursor = conexão.cursor()
 
 # Inserindo um registro na tabela "tbl_produtos"
 # Os nomes das colunas precisam estar entre parênteses e em ordem correspondente aos valores que estão sendo inseridos
-#produto = produtos('xburguer',3 , 12, 2)
-#produto3 = produtos('xbacon', '5', '15', '1')
-cliente = usuario('paula', '12345', 'paula@gmail.com' )
+
+cliente = usuario('Felipe', '1404', 'felipea@gmail.com')
 cursor.execute("INSERT INTO tbl_clientes (nome_cliente, telefone, email_cliente) VALUES (?, ?, ?)", 
                 (cliente.nome, cliente.email, cliente.telefone))
 
